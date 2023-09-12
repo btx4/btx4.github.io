@@ -1,0 +1,3 @@
+page2: 
+the opening <b> is never closed. I added </b> after the word Inn.
+I added a link for bay.
