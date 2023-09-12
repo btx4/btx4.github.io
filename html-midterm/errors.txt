@@ -1,3 +1,18 @@
+page1: 
+rearranged h2 and h3 on this page to put them in order.
+added a closing <em> bracketto the word creme fraiche
+
 page2: 
 the opening <b> is never closed. I added </b> after the word Inn.
 I added a link for bay.
+
+page3:
+added a closing <tb> after Lily in the table, then moved it to the next row.
+I then changed <Zapata> to <td> instead of <th>.
+I then moved the 22 from adrienne's row to olatunkbo's row.
+I then moved axelia's name to her correct row.
+
+page4:
+Redid all of the formatting for the table. It misunderstood how rows and columns work,
+and there were multiple issues with <tr> and <td>. I also changed the table headers to 
+actually be table headers to increase accessibility.
