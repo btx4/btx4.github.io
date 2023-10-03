@@ -17,8 +17,11 @@ article {
   margin: 20px auto;
   position: relative;
   background-color: white;
-  background-image: linear-gradient(to bottom,rgba(0,0,0,.5), rgba(0,0,0,0), rgba(0,0,0,.5));
-
+  background-image: url("bottom-image.png"), url("top-image.png"), linear-gradient(to bottom,rgba(0,0,0,.5), rgba(0,0,0,0), rgba(0,0,0,.5));
+  background-position: bottom center, top center, center center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  border-top: 1mm solid red;
+  border-bottom: 1mm solid red;
 }
 
 address {
@@ -40,6 +43,7 @@ h1 {
   color: white;
   text-shadow: 1px 1px 1px black;
   background-image: url("logo.png");
+  filter: drop-shadow(5px 5px 4px);
 }
 
 /* Your CSS below here */
