@@ -1,0 +1,56 @@
+.holder {
+    width: 100vw;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+h3 {
+    font-size: 70px;
+    position: absolute;
+}
+
+h2 {
+    font-size: 40px;
+    padding-top: 15px;
+    padding-left: 120px;
+}
+
+.container{
+    position: absolute;
+    background-color: black;
+    bottom: 0px;
+    left: 25%;
+    border: solid black 5px;
+    width: 710px;
+    height: 80px;
+}
+.box1 {
+    background-color: rgb(12, 141, 98);
+    position: absolute;
+    left: 10px;
+    width: 230px;
+    height: 80px;
+}
+
+.box2 {
+    background-color: red;
+    position: absolute;
+    left: 240px;
+    width: 230px;
+    height: 80px;
+}
+
+.clock {
+    background-color: white;
+    position: absolute;
+    left: 470px;
+    width: 230px;
+    height: 80px;
+}
+
+.logo {
+    position: absolute;
+    top: 30px;
+    left: 1000px;
+}
