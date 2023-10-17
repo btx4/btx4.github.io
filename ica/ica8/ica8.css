@@ -15,20 +15,21 @@ body {
   width: 25vw;
   height: 20vh;
   position: relative;
-  background-color: orangered;
   animation: box2move 5s infinite;  /* 2s = duration, forwards = keep the end state */
 }
 
 @keyframes box2move {
   0% {
     transform: translateX(0);
-
+    background-color: orangered;
   }
   50% {
     transform: translateX(200px);
+    background-color: green;
   }
   100% {
     transform: translateX(0);
+    background-color: orangered;
   }
 }
 
