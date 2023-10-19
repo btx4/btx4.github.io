@@ -1,0 +1,85 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #94AFF3;
+    color: maroon;
+    font-family: 'Holtwood One SC', serif;
+}
+nav{
+    height: 50vh;
+    width: 100vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:40px;
+    background-color: #f582a3;
+}
+nav a{
+    width:20%;
+    border-left: solid maroon 1px;
+    border-right: solid maroon 1px;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none;
+    font-family: 'BioRhyme', serif;
+}
+
+
+.flip-image {
+    transform: scaleY(-1);
+    width:40vw;
+    transition: width 2s;
+}
+
+.flip-image:hover {
+    width: 25vw;
+}
+
+#red-ball{
+    background-color: rgb(81, 160, 228);
+    width: 200px;
+    height:200px;
+    border-radius: 50%;
+    position: absolute;
+    left:5vw;
+    top:0;
+    animation: ballbounce1 5s infinite;
+}
+
+@keyframes ballbounce1 {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    10% {
+        transform: translateY(71vh) translateX(20vw);
+    }
+    20% {
+        transform: translateY(0vh) translateX(40vw);
+    }
+    30% {
+        transform: translateY(71vh) translateX(60vw);
+    }
+    35.05% {
+        transform: translateY(31.95vh) translateX(71vw);
+    }
+    40% {
+        transform: translateY(0) translateX(62vh);
+    }
+    50% {
+        transform: translateY(71vh) translateX(42vh)
+    }
+    60% {
+        transform: translateY(0) translateX(22vh);
+    }
+    70% {
+        transform: translateY(71vh) translateX(2vh)
+    }
+    80% {
+        transform: translateY(0) translateX(62vh);
+    }
+    90% {
+        transform: translateY(71vh)
+    }
+}
+
