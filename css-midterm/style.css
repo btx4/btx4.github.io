@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background-color: #f4f4f4;
+}
+
+.concert-container {
+    max-width: 100vw;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.concert-date {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.concert-date:last-child {
+    border-bottom: none;
+}

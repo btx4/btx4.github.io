@@ -31,4 +31,3 @@ void temperatureDelta(double new_temperature[], double old_temperature[], double
 
 int main(){
 }
-}
