@@ -1,49 +1,82 @@
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: auto;
-    background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0; /* Reset the default margin */
+  background-color: #331832;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    padding: 0px;
-    margin-bottom: 20px;
-}
-h1 {
-    margin: 0;
+  background-color: #331832;
+  margin-top: 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 0px;
+  margin-bottom: 20px;
 }
 
+h1 {
+  font-family: "Open Sans", sans-serif;
+  margin: 1em;
+}
 
 h2 {
-    color: #a5ccf3;
+  font-family: "Lora", serif;
+}
+p {
+  font-family: "Lora", serif;
+}
+footer p {
+    color: #fff
+}
+.artists {
+  font-family: "Lora", serif;
+}
+.repertoire {
+  font-family: "Lora", serif;
 }
 
 .date {
-    color: #8e44ad;
-    font-weight: bold;
+  color: #6886de;
+  font-weight: bold;
 }
 
-.flex-container {
-    display: flex;
-    flex-direction: row;
+.concerts-container {
+  padding: 0 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
 }
-
-
-
 
 .concert {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 40px;
+  width: calc(100% - 10px); /* Adjusted width */
+  box-sizing: border-box; /* Include padding in the width calculation */
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 footer {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+.concerts-container .concert:last-child {
+  grid-column: span 2; /* Span across 2 columns */
+}
+
+@media (max-width: 650px) {
+  .concerts-container {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+
+  .concerts-container .concert:last-child {
+    grid-column: span 1; /* Span across 2 columns */
+  }
+
+  .concert {
+    width: 100%;
+  }
 }
