@@ -26,6 +26,10 @@ h2 {
 p {
   font-family: "Lora", serif;
 }
+header p {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 footer p {
     color: #fff
 }
