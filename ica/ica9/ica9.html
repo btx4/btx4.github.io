@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,11 +28,11 @@
       const press = document.getElementById("press"); //for now, Be very specific about which query you want.
 
       button.addEventListener("click", changeBackgroundColor);
-      press.addEventListener("click", updateName);
+      press.addEventListener("click", changeButtonColor);
 
-      function updateName() {
-        let name = prompt("Enter a new name");
-        button.textContent = `Player 1: ${name}`;
+      function changeButtonColor() {
+        press.style.backgroundColor = getRandomColor();
+        console.log("changed the color")
       }
 
       function changeBackgroundColor() {
