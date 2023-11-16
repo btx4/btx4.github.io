@@ -1,0 +1,43 @@
+ /* Add any additional styles you want */
+ body {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .topText {
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    animation: marqueeRtoL 10s linear infinite;
+    background-color: black;
+    top: 20%; /* Adjust the top position as needed */
+
+  }
+
+  .bottomText {
+    background-color: rebeccapurple;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    animation: marqueeLtoR 10s linear infinite;
+    top: 70%; /* Adjust the top position as needed */
+
+  }
+
+  @keyframes marqueeRtoL {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes marqueeLtoR {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
