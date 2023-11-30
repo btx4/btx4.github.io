@@ -1,36 +1,61 @@
-html, body {
-    margin: 0;
-    background-color: darkslategray;
-  }
-  
-  html {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: 100%;
-  }
-  
-  body {
-    overflow: hidden;
-    height: inherit;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    letter-spacing: -1px;
-    position: absolute;
-    margin: 0;
-    top: -4px;
-    right: 5px;
-    color:  gray;
-  
-  }
+html,
+body {
+  margin: 0;
+  background-color: darkslategray;
+}
 
-  h2 {
-    font-size: 2rem;
-    letter-spacing: -1px;
-    position: absolute;
-    margin: 0;
-    top: -4px;
-    left: 5px;
-    color:  gray;
-  
-  }
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  height: inherit;
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: -1px;
+  position: absolute;
+  margin: 0;
+  top: -4px;
+  right: 5px;
+  color: gray;
+}
+
+h2 {
+  font-size: 2rem;
+  letter-spacing: -1px;
+  position: absolute;
+  margin: 0;
+  top: -4px;
+  left: 5px;
+  color: gray;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#pregame-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-size: 24px;
+}
+
+#start-game-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
