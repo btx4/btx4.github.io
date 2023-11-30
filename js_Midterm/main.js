@@ -1,10 +1,16 @@
 // setup canvas
 
+appendedNumbersCount = 0;
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
 const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
+const pregameOverlay = document.getElementById("pregame-overlay");
+
+const startGameButton = document.getElementById("start-game-button");
+
 
 // function to generate random number
 
@@ -34,7 +40,7 @@ class MouseBall {
   }
 }
 
-let mouseBall = new MouseBall(-175, height / 2, randomRGB(), 250);
+let mouseBall = new MouseBall(-0, height / 2, randomRGB(), 100);
 
 function updateMouseBallPosition(event) {
   mouseBall.y = event.clientY;
@@ -61,9 +67,10 @@ class Rectangle {
     this.collideTimeout = 1000; // Time in milliseconds for how long the rectangle stays darker
   }
 
-  handleCollision() {
+  handleCollision(ball) {
     this.collided = true;
     let originalColor = this.color;
+    ball.color = this.color;
     this.color = this.darkenColor();
     updateHtmlDocument(this.number);
 
@@ -159,7 +166,7 @@ class Ball {
         // Collided with the rectangle, adjust the velocity
         if (this.y >= rect.y - 3 && this.y <= rect.y + rect.height + 2) {
           this.velX = -this.velX; // Reverse horizontal velocity
-          rect.handleCollision();
+          rect.handleCollision(this);
         }
       }
     }
@@ -170,18 +177,23 @@ class Ball {
     const distance = Math.sqrt(dx * dx + dy * dy);
 
     if (distance < this.size + otherBall.size) {
-      if (
-        Math.abs(this.velX) + Math.abs(this.velY) >
-        Math.abs(otherBall.velX) + Math.abs(otherBall.velY)
-      ) {
-        otherBall.color = this.color;
-        otherBall.velX = -otherBall.velX; // Reverse the other ball's horizontal velocity
-        otherBall.x += otherBall.velX; // Move the other ball away to avoid repeated collisions
-      } else {
-        this.color = otherBall.color;
-        this.velX = -this.velX; // Reverse the ball's horizontal velocity
-        this.x += this.velX; // Move the ball away to avoid repeated collisions
-      }
+      // Calculate the overlap distance
+      const overlap = this.size + otherBall.size - distance;
+
+      // Calculate the normalized collision vector
+      const normalX = dx / distance;
+      const normalY = dy / distance;
+
+      // Separate the balls along the collision vector
+      const separationX = overlap * normalX;
+      const separationY = overlap * normalY;
+
+      // Move the balls away from each other
+      this.x += separationX / 2;
+      this.y += separationY / 2;
+
+      // Rest of the collision response code (color matching and velocity adjustment) remains unchanged
+      // ...
 
       // Balls have collided, so adjust their velocities
       const angle = Math.atan2(dy, dx);
@@ -195,6 +207,8 @@ class Ball {
     }
   }
 }
+
+
 
 const ball = new Ball(width * (2 / 3), height * 0.5, -4, 0, randomRGB(), 20);
 
@@ -231,7 +245,6 @@ function animationLoop() {
 }
 
 // Start the animation loop
-animationLoop();
 appendedNumbersCount = 0;
 const numbers = [];
 const collisionInfo = document.getElementById("phonenumber");
@@ -308,6 +321,7 @@ function gameDone(numbers) {
   function handleYesButtonClick() {
     // Add your logic for "Yes" button click
     console.log("Yes button clicked");
+
     // For example, you can close the overlay or perform other actions
     closeOverlay();
   }
@@ -328,7 +342,13 @@ function gameDone(numbers) {
     appendedNumbersCount = 0;
     numbers = [];
     collisionInfo.textContent = "Enter Your Phone Number:";
-
-
   }
 }
+
+function startGame() {
+  pregameOverlay.style.display = "none";
+  // Start the animation loop
+  animationLoop();
+}
+
+startGameButton.addEventListener("click", startGame);
