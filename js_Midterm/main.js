@@ -246,13 +246,14 @@ function animationLoop() {
 
 // Start the animation loop
 appendedNumbersCount = 0;
-const numbers = [];
+const numbers = [0,0,0,0,0,0,0,0,0,0];
 const collisionInfo = document.getElementById("phonenumber");
 function updateHtmlDocument(number) {
-  collisionInfo.textContent += ` ${number}`;
-
+  numbers[appendedNumbersCount];
   appendedNumbersCount++;
-  numbers.push(number);
+
+  
+  collisionInfo.textContent += ` ${number}`;
   if (appendedNumbersCount === 10) {
     // Call a function to freeze the page
     gameDone(numbers);
