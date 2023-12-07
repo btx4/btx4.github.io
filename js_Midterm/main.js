@@ -246,10 +246,10 @@ function animationLoop() {
 
 // Start the animation loop
 appendedNumbersCount = 0;
-const numbers = [0,0,0,0,0,0,0,0,0,0];
+const numbers = [];
 const collisionInfo = document.getElementById("phonenumber");
 function updateHtmlDocument(number) {
-  numbers[appendedNumbersCount];
+  numbers[appendedNumbersCount] = number;
   appendedNumbersCount++;
 
   
