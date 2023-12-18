@@ -12,14 +12,12 @@ const pregameOverlay = document.getElementById("pregame-overlay");
 const startGameButton = document.getElementById("start-game-button");
 
 
-// function to generate random number
 
 function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
   return num;
 }
 
-// function to generate random color
 
 function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
@@ -46,12 +44,10 @@ function updateMouseBallPosition(event) {
   mouseBall.y = event.clientY;
 }
 
-// Add an event listener to track mouse movement
 window.addEventListener("mousemove", updateMouseBallPosition);
 
 const rectangles = [];
 
-// Function to generate a random color for rectangles
 function randomRectColor() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
@@ -63,8 +59,8 @@ class Rectangle {
     this.width = width;
     this.height = height;
     this.color = color;
-    this.collided = false; // New property to track collision state
-    this.collideTimeout = 1000; // Time in milliseconds for how long the rectangle stays darker
+    this.collided = false; 
+    this.collideTimeout = 1000; 
   }
 
   handleCollision(ball) {
@@ -73,8 +69,6 @@ class Rectangle {
     ball.color = this.color;
     this.color = this.darkenColor();
     updateHtmlDocument(this.number);
-
-    // Set a timeout to reset the collision state after a certain duration
     setTimeout(() => {
       this.collided = false;
       this.color = originalColor;
@@ -82,16 +76,17 @@ class Rectangle {
   }
 
   darkenColor() {
-    // Darken the color by reducing each RGB component
     const [r, g, b] = this.color.match(/\d+/g);
-    const amount = 100; // You can adjust this value to control the darkness
+    const amount = 100;
     const darkenedR = Math.max(0, r - amount);
     const darkenedG = Math.max(0, g - amount);
     const darkenedB = Math.max(0, b - amount);
     return `rgb(${darkenedR},${darkenedG},${darkenedB})`;
   }
 }
+
 // Function to generate rectangles
+
 function generateRectangles() {
   const rectWidth = 50;
   const rectHeight = (height - 55) / 10;
@@ -208,7 +203,7 @@ class Ball {
   }
 }
 
-
+let numbers = [];
 
 const ball = new Ball(width * (2 / 3), height * 0.5, -4, 0, randomRGB(), 20);
 
@@ -220,6 +215,9 @@ function animationLoop() {
   ball.draw();
   ball.update();
 
+  if (ball.x < ball.size ){
+    updateHtmlDocument(-1)
+  }
   // Update and draw the mouse ball
   mouseBall.draw();
   ball.checkCollision(mouseBall);
@@ -246,19 +244,26 @@ function animationLoop() {
 
 // Start the animation loop
 appendedNumbersCount = 0;
-const numbers = [];
 const collisionInfo = document.getElementById("phonenumber");
 function updateHtmlDocument(number) {
-  numbers[appendedNumbersCount] = number;
-  appendedNumbersCount++;
+  if(number == -1) {
+    numbers = [];
+    appendedNumbersCount = 0;
+    collisionInfo.textContent = "Enter Your Phone Number:"
+  }
+  else{
+    numbers[appendedNumbersCount] = number;
+    appendedNumbersCount++;
 
-  
-  collisionInfo.textContent += ` ${number}`;
-  if (appendedNumbersCount === 10) {
-    // Call a function to freeze the page
-    gameDone(numbers);
+    
+    collisionInfo.textContent += ` ${number}`;
+    if (appendedNumbersCount === 10) {
+      // Call a function to freeze the page
+      gameDone(numbers);
+    }
   }
 }
+
 // Add an HTML element to display collision information
 const collisionInfoElement = document.createElement("div");
 collisionInfoElement.id = "collision-info";
