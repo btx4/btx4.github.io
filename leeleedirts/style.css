@@ -1,8 +1,13 @@
+html {
+    font-size: .7vw;
+}
+
 .sidebar-sticky {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%; /* Set the height of the sidebar-sticky container to 100% */
+    overflow: hidden;
+    height: 100vh; /* Set the height of the sidebar-sticky container to 100% */
 }
 
 .nav-item {
@@ -18,10 +23,14 @@
 }
 
 .image-flexbox img {
-    max-width: 100%;
+    max-width: 40%;
     height: auto;
     margin: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: grey;
 }
