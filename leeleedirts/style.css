@@ -23,7 +23,7 @@ html {
 }
 
 .image-flexbox img {
-    max-width: 40%;
+    max-width: 30%;
     height: auto;
     margin: 10px;
     border: 1px solid #ddd;
