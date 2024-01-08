@@ -1,0 +1,27 @@
+.sidebar-sticky {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; /* Set the height of the sidebar-sticky container to 100% */
+}
+
+.nav-item {
+    text-align: center;
+    flex-grow: 1; /* Allow items to take up equal vertical space within the container */
+}
+
+.image-flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.image-flexbox img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
