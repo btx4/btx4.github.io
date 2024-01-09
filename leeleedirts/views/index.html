@@ -8,7 +8,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Your custom CSS (optional) -->
+    <!-- Bootstrap Carousel CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Your custom CSS-->
     <link rel ="stylesheet" href = "../style/style.css">
 </head>
 <body>
@@ -58,24 +61,46 @@
         </div>
     </div>
     
-
+            
             <!-- Main content area -->
             <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4" style="height: 120vh;">
                 <div class="image-flexbox">
                     <!-- Placeholder images (replace with your actual image URLs) -->
                     <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
-                    <img src="../img/image1.png" alt="Image 1">
+                    <img src="../img/image2.png" alt="Image 2">
+                    <img src="../img/image1.png" alt="Image 3">
+                    <img src="../img/image2.png" alt="Image 4">
+                    <img src="../img/image1.png" alt="Image 5">
+                    <img src="../img/image2.png" alt="Image 6">
+                    <img src="../img/image1.png" alt="Image 7">
+                    <img src="../img/image2.png" alt="Image 8">
+                    <img src="../img/image1.png" alt="Image 9">
+                    <img src="../img/image2.png" alt="Image 10">
+                    <img src="../img/image1.png" alt="Image 11">
+                    <img src="../img/image2.png" alt="Image 12">
                     <!-- Add more images as needed -->
+                </div>
+
+                <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <!-- Images will be dynamically added here via JavaScript -->
+                                    </div>
+                                    <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
@@ -87,49 +112,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Get all images inside the flexbox
-            var images = document.querySelectorAll('.image-flexbox img');
-
-            // Add a click event listener to each image
-            images.forEach(function (image, index) {
-                image.addEventListener('click', function () {
-                    openGallery(index);
+        $(document).ready(function () {
+            // Handle image click to open the modal
+            $('.image-flexbox img').on('click', function () {
+                // Clear existing carousel items
+                $('#imageCarousel .carousel-inner').empty();
+    
+                // Populate the modal carousel with images
+                $('.image-flexbox img').each(function (index) {
+                    var imageUrl = $(this).attr('src');
+                    var altText = $(this).attr('alt');
+                    var activeClass = index === 0 ? 'active' : '';
+                    var carouselItem = $('<div class="carousel-item ' + activeClass + '"><img src="' + imageUrl + '" alt="' + altText + '"></div>');
+                    $('#imageCarousel .carousel-inner').append(carouselItem);
                 });
+    
+                // Show the Bootstrap Modal
+                $('#imageModal').modal('show');
             });
-
-            // Function to open the gallery
-            function openGallery(index) {
-                var modal = document.createElement('div');
-                modal.classList.add('image-modal');
-                modal.innerHTML = '<span class="close-btn">&times;</span><img src="' + images[index].src + '" alt="Gallery Image">';
-                document.body.appendChild(modal);
-
-                // Add a click event listener to close the gallery
-                modal.querySelector('.close-btn').addEventListener('click', function () {
-                    document.body.removeChild(modal);
-                });
-
-                // Add keyboard navigation for next and previous images
-                document.addEventListener('keydown', function (event) {
-                    if (event.key === 'ArrowRight') {
-                        index = (index + 1) % images.length;
-                        updateGalleryImage(index);
-                    } else if (event.key === 'ArrowLeft') {
-                        index = (index - 1 + images.length) % images.length;
-                        updateGalleryImage(index);
-                    } else if (event.key === 'Escape') {
-                        document.body.removeChild(modal);
-                    }
-                });
-            }
-
-            // Function to update the gallery image
-            function updateGalleryImage(index) {
-                var modal = document.querySelector('.image-modal img');
-                modal.src = images[index].src;
-            }
         });
     </script>
+
+    <script src="../scripts/script.js"></script>
 </body>
 </html>
